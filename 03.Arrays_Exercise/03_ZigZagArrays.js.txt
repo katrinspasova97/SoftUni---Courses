@@ -1,0 +1,42 @@
+package Exercise_03_Arrays;
+
+import java.util.Scanner;
+
+public class EX_03_ZigZagArrays {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        //броя на редовете
+        int row = Integer.parseInt(scanner.nextLine());
+        //масив 1
+        int [] firstArray = new int [row];
+        //масив 2
+        int [] secondArray = new int [row];
+        //фор цикъл от първия до последния ред
+        for (int i = 1; i <= row ; i++) {
+        //въвеждаме символите на всеки един ред
+        String [] numbers = scanner.nextLine().split(" ");
+        //първото число от реда, парсваме от символ в цяло число
+        int number1 = Integer.parseInt(numbers[0]);
+        //втророто число от реда парсваме от символ в цяло число
+        int number2 = Integer.parseInt(numbers[1]);
+
+        if(i % 2 == 0){
+            firstArray [i - 1] = number2;
+            secondArray [i - 1] = number1;
+        }else{
+            firstArray [i - 1] = number1;
+            secondArray [i - 1] = number2;
+        }
+
+
+        }
+        for (int number: firstArray) {
+            System.out.print(number + " ");
+        }
+        System.out.println();
+        for (int number: secondArray) {
+            System.out.print(number + " ");
+        }
+
+    }
+}

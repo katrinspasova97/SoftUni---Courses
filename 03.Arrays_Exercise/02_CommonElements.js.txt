@@ -1,0 +1,25 @@
+package Exercise_03_Arrays;
+
+import java.util.Scanner;
+
+public class EX_02_CommonElements {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        //първия масив
+        String firstArray[] = scanner.nextLine().split(" ");
+        //втория масив
+        String secondArray[] = scanner.nextLine().split(" ");
+        //фор цикъл за цялата колекция от първия масив
+        for (String el2 : secondArray) {
+            //фор цикъл за цялата колекция от втория масив
+            for (String el1 : firstArray) {
+                //сравняваме всеки един елемен от 1 масив с всеки 1 елемент от 2 масив
+                if (el2.equals((el1))) {
+                    //отпечатваме само тези, които съвпадат
+                    System.out.print(el2 + " ");
+                }
+
+            }
+        }
+    }
+}

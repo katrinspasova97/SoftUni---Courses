@@ -1,0 +1,46 @@
+package Exercise_03_Arrays;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class EX_04_ArrayRotation {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        //входните данни под формата на String, разделяме ги със " ",
+        //след това ги преобразуваме в цели числа, и правим масив от цели числа
+        int [] numbers = Arrays.stream(scanner.nextLine() //"51", "47", "32", "61", "21"
+                        .split(" "))//["51" "47" "32" "61" "21"]
+                        .mapToInt(e->Integer.parseInt(e)) //[51, 47, 32, 61, 21]
+                        .toArray(); //[51 47 32 61 41]
+        //броя на ротациите
+        int rotations = Integer.parseInt(scanner.nextLine());
+
+        for (int rotation = 1; rotation <= rotations ; rotation++) {
+         //ротация на масива
+         //1.взимаме първия елемент
+            //винаги стои на 0 позиция в масива
+            int firstElement = numbers[0];
+         //2.преместваме /копираме/ елементите наляво
+            //[51, 47, 31, 61, 21] => [47, 31, 61, 21, 21]
+            //обхождаме вс. позиции в масива от първата до последната - 1, защото след посдледния инекс няма друг
+            //и няма как да заместим последния със следващия
+            //!!! без промяна на последната позиция
+            for (int index = 0; index < numbers.length-1; index++) {
+            //всеки елемент от масива да се замести със следващия, безпоследния /последния-1/ - от фор цикъла
+                numbers [index] = numbers [index+1];
+            }
+
+         //3.поставяме първият елемент на последно място
+            //[47, 31, 61, 21, 51]
+            numbers [numbers.length-1] = firstElement;
+        }
+
+        for (int number:numbers) {
+            System.out.print(number + " ");
+        }
+
+
+
+    }
+}

@@ -1,0 +1,37 @@
+package Exercise_03_Arrays;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class EX_5_TopIntegers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        //1. входни данни
+        int [] numbers = Arrays.stream(scanner.nextLine().split(" "))
+                        .mapToInt(e -> Integer.parseInt(e))
+                        .toArray();
+        //обхождаме вс елементи от масива без последния, защото той винаги е топ /след него няма друг/
+        for (int index = 0; index < numbers.length - 1; index++) {
+            int currentNumber = numbers[index];
+            boolean isBigger = true;
+            //обхождаме вс елементи след този на който сме в момента до последния включително
+            for (int i = index + 1; i < numbers.length; i++) {
+                int afterNumber = numbers[i];
+                if (afterNumber >= currentNumber) {
+                    isBigger = false;
+                    break;
+                }
+            }
+                if(isBigger){
+                    System.out.print(currentNumber + " ");
+                }
+            }
+        System.out.print(numbers[numbers.length-1]);
+        }
+
+
+
+    }
+

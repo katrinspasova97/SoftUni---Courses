@@ -1,0 +1,77 @@
+package Exercise_03_Arrays;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class EX_09_ArrayModifier {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int[] numbers = Arrays.stream(scanner.nextLine().split(" "))
+                .mapToInt(e -> Integer.parseInt(e))
+                .toArray();
+        //повтаряме - въвеждаме команди
+        //стоп - въвеждам "end"
+        //продължавам - въведеното != "end"
+        String comand = scanner.nextLine();
+        //[23 -2 321 87 42 90 -123]
+        while (!comand.equals("end")) {
+
+
+            //comand = "swap 1 3".split(" ") -> ["swap" "1" "3"]
+            if (comand.contains("swap")) {
+                //взимаме индекса стоящ на 1 място -> "1"  и го парсваме в int
+                int index1 = Integer.parseInt(comand.split(" ")[1]); // 1
+                //взимаме индекса стоящ на 2 място -> "2"  и го парсваме в int
+                int index2 = Integer.parseInt(comand.split(" ")[2]); // 3
+                //числото което се намира на първия индекс
+                //от масива с числа, дай ми елемента който се намира на индекс1 => който индекс = 1
+                //index1 = 1, от масива вземаме елемента който се намира под индекс1, тоест елемента на позиция 1
+                //23 -2 321 87 42 90 -123
+                //0  1   2   3  4  5  6
+                int firstIndexNumber = numbers[index1]; //-2
+                //числото което се намира на втория индекс
+                ////от масива с числа, дай ми елемента който се намира на индекс 2
+                int secondIndexNumber = numbers[index2]; //87
+                //в масва там от където взех първото число index1 слагам второто число
+                numbers[index1] = secondIndexNumber;
+                ////в масва там от където взех второто число index2 слагам първото число
+                numbers[index2] = firstIndexNumber;
+
+
+            //comand = "multiply 1 2".split(" ") -> ["multiply" "1" "2"]
+            } else if (comand.contains("multiply")) {
+                //взимаме индекса стоящ на 1 място -> "1"  и го парсваме в int
+                int index1 = Integer.parseInt(comand.split(" ")[1]); // 1
+                //взимаме индекса стоящ на 2 място -> "2"  и го парсваме в int
+                int index2 = Integer.parseInt(comand.split(" ")[2]); // 2
+                //числото което се намира на първия индекс
+                //от масива с числа, дай ми елемента който се намира на индекс 1
+                int firstIndexNumber = numbers[index1]; //-2
+                //числото което се намира на втория индекс
+                ////от масива с числа, дай ми елемента който се намира на индекс 2
+                int secondIndexNumber = numbers[index2]; //321
+                //умножаваме ги и запазваме резултата в index 1
+                int product = firstIndexNumber * secondIndexNumber;
+                numbers[index1] = product;
+
+
+            } else if (comand.contains("decrease")) {
+                //всяко едно число от масива -= 1
+                //обхождаме вс елементи и -1
+                for (int index = 0; index < numbers.length; index++) {
+                    numbers[index]--;
+
+
+                }
+            }
+            comand = scanner.nextLine();
+        }
+        System.out.println(Arrays                                       //86, 7382, 2369942, -124, 41, 89, -3
+                                    .toString(numbers)                  //"[86, 7382, 2369942, -124, 41, 89, -3]"
+                                    .replace("[","")   // "86, 7382, 2369942, -124, 41, 89, -3]"
+                                    .replace("]","")); // "86, 7382, 2369942, -124, 41, 89, -3"
+    }
+}
+
+

@@ -1,0 +1,44 @@
+package Exercise_03_Arrays;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class EX_10_TheLift {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        //хората които чакат
+        // 15
+        int waitingPeople = Integer.parseInt(scanner.nextLine());
+        //текущото състояние на вагона, разделено с един интервал: " "
+        // 0 0 0 0
+        int[] wagons = Arrays.stream(scanner.nextLine().split(" "))
+                .mapToInt(e -> Integer.parseInt(e))
+                .toArray();
+
+        boolean liftFull = true;
+
+        for (int i = 0; i < wagons.length; i++) {
+            int avaibledSpace = 4 - wagons[i];
+
+            if (avaibledSpace > 0) {
+                if (avaibledSpace > waitingPeople) {
+                    wagons[i] += waitingPeople;
+                    waitingPeople = 0;
+                    liftFull = false;
+                } else {
+                    wagons[i] = 4;
+                    waitingPeople -= avaibledSpace;
+                }
+            }
+
+        }
+        if (!liftFull) {
+            System.out.println("The lift has empty spots!");
+        } else if (waitingPeople > 0){
+            System.out.printf("There isn't enough space! %d people in a queue!%n", waitingPeople);
+        }
+        for (int wagon: wagons) {
+            System.out.print(wagon + " ");
+        }
+    }
+
+}
