@@ -1,0 +1,39 @@
+package Lab_03_Arrays;
+
+import java.util.Scanner;
+
+public class L_01_DayOfWeek {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        //въвеждаме число
+        int day = Integer.parseInt(scanner.nextLine());
+        //правим масив с елементи броя на дните от седмицата
+        String [] days = {
+                "Monday",
+                "Tuesday",
+                "Wednessday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+        };
+        //ако въведеното число е от 1 до 7 (защото дните от седмицата са 7)
+        //принтираме деня на който отговаря това число от масива
+        //въведеното число -1, защото винаги елементите от масива започват не от 1 а от 0
+        if(day>0&&day<=days.length) {
+            System.out.println(days[day - 1]);
+        }else{
+            System.out.println("Invalid day!");
+
+        }
+
+
+
+
+
+
+
+    }
+}
